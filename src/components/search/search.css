@@ -2,3 +2,10 @@
     background-color: rgb(255, 87, 168);
     width: 300px;
 } */
+/* @media only screen and (max-width: 768px) {
+    .App {
+    display: flex;
+    flex-direction: column;
+    }
+  }
+   */

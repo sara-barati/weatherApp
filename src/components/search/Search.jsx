@@ -3,12 +3,31 @@ import { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { GEO_API_URL, geoApiOptions } from "../../api/Api";
 
-export default function Search({onSearchChange}) {
+export default function Search({ onSearchChange }) {
   const [search, setSeatch] = useState("");
 
   const handleOnChange = (searchData) => {
     setSeatch(searchData);
-    onSearchChange(searchData)
+    onSearchChange(searchData);
+  };
+
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+
+      backgroundColor: "rgba(0, 0, 0, 0.614)",
+      height: "15px",
+      color: state.isSelected ? "black" : "white",
+      padding: 20,
+    }),
+
+    control: () => ({
+      // none of react-select's styles are passed to <Control />
+      width: 250,
+      color: "white",
+      borderBottom: "1px solid white",
+      //   borderButtom:"30px"
+    }),
   };
 
   const loadOptions = (inputValue) => {
@@ -31,9 +50,11 @@ export default function Search({onSearchChange}) {
 
   return (
     <AsyncPaginate
+      className="input"
       placeholder="Search location"
       debounceTimeout={600}
       value={search}
+      styles={customStyles}
       onChange={handleOnChange}
       loadOptions={loadOptions}
     />

@@ -3,6 +3,7 @@ import "./components/search/Search";
 import Search from "./components/search/Search";
 import { useState } from "react";
 import Weather from "./components/weather/Weather";
+import Forecast from "./components/forcast/Forcast";
 import { WEATHER_API_URL, WEATHER_API_KEY } from "./api/Api";
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -29,15 +30,34 @@ function App() {
       .catch(console.log("err"));
   };
   console.log(currentWeather);
+  console.log(forecast);
   return (
     <div className="App">
+      <p className="theweather">the.weather</p>
+      <div className="home"> 
+      {currentWeather?<>
+      <p className="temperature">{Math.round(currentWeather?.main.temp)}°</p>
+      <p className="city">{currentWeather?.city}</p>
+      <div>
+      <img
+      
+      alt="weather"
+      className="weather-icon"
+      src={`icons/${currentWeather?.weather[0].icon}.png`}
+    />
+      <p className="weather-description">{currentWeather?.weather[0].description}</p>
+      </div>
+      </>:""}
+      </div>
+      <div className="right">
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <Weather data={currentWeather} />}
+      {forecast && <Forecast data={forecast} />}
+      </div>
     </div>
     
 
 
-      // {forecast && <Forecast data={forecast} />}
  
 
   );

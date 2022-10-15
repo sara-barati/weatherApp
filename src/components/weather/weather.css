@@ -1,0 +1,19 @@
+.weather {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+}
+.title {
+  padding-bottom: 8px;
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+.details {
+  margin-top: 20px;
+}
+.parameter-row {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
